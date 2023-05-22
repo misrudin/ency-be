@@ -34,11 +34,8 @@ module.exports = {
       }
       console.log("Test");
       console.log(result);
-      delete result.password
       const token = jwt.sign({
-        name: result.name,
-        email: result.email,
-        id: result.id
+        data: 'test'
       }, process.env.SECRET_KEY, { expiresIn: '1h' });
       console.log(result);
       console.log("Test2");
