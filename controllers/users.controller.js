@@ -30,12 +30,14 @@ module.exports = {
           message: "Email atau password tidak cocok!",
         });
       }
+      console.log("Test");
       delete result.password
       const token = jwt.sign({
         name: result.name,
         email: result.email,
         id: result.id
       }, process.env.SECRET_KEY, { expiresIn: '1h' });
+      console.log("Test2");
       const data ={
         token,
         user: result
@@ -47,7 +49,6 @@ module.exports = {
         message: "",
       });
     } catch (err) {
-      console.log("Error", err);
       return response({
         res,
         data: null,
