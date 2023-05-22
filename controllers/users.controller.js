@@ -31,6 +31,7 @@ module.exports = {
         });
       }
       console.log("Test");
+      console.log(result);
       delete result.password
       const token = jwt.sign({
         name: result.name,
