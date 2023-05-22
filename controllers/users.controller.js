@@ -7,9 +7,9 @@ module.exports = {
   async login(req, res) {
     const { email, password } = req.body;
     try {
-      const result = await customerModel.getOneByEmail(email);
+      const resp = await customerModel.getOneByEmail(email);
 
-      if (!result) {
+      if (!resp) {
         return response({
           res,
           data: null,
@@ -17,6 +17,8 @@ module.exports = {
           message: "Email atau password tidak cocok!",
         });
       }
+
+      const result = JSON.parse(JSON.stringify(resp))
 
       const isPasswordMatch = await bcrypt.compareSync(
         password,
