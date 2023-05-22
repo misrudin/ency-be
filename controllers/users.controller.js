@@ -40,7 +40,7 @@ module.exports = {
       console.log(result);
       const jwtToken = jwt.sign({
         data: 'test'
-      }, process.env.SECRET_KEY, { expiresIn: '1h' });
+      }, 'rahasi@', { expiresIn: '1h' });
       console.log(jwtToken);
       console.log(result);
       console.log("Test2");
