@@ -47,6 +47,7 @@ module.exports = {
         message: "",
       });
     } catch (err) {
+      console.log("Error", err);
       return response({
         res,
         data: null,
