@@ -3,6 +3,10 @@ const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
 const response = require("../helpers/response");
 
+const dotenv = require("dotenv");
+
+dotenv.config();
+
 module.exports = {
   async login(req, res) {
     const { email, password } = req.body;
