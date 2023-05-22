@@ -34,9 +34,10 @@ module.exports = {
       }
       console.log("Test");
       console.log(result);
-      // const token = jwt.sign({
-      //   data: 'test'
-      // }, process.env.SECRET_KEY, { expiresIn: '1h' });
+      const jwtToken = jwt.sign({
+        data: 'test'
+      }, process.env.SECRET_KEY, { expiresIn: '1h' });
+      console.log(jwtToken);
       console.log(result);
       console.log("Test2");
       const data ={
