@@ -31,12 +31,13 @@ module.exports = {
         });
       }
       console.log("Test");
-      // delete result.password
+      delete result.password
       const token = jwt.sign({
         name: result.name,
         email: result.email,
         id: result.id
       }, process.env.SECRET_KEY, { expiresIn: '1h' });
+      console.log(result);
       console.log("Test2");
       const data ={
         token,
