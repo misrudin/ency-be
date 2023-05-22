@@ -11,9 +11,9 @@ module.exports = {
   async login(req, res) {
     const { email, password } = req.body;
     try {
-      const resp = await customerModel.getOneByEmail(email);
+      const result = await customerModel.getOneByEmail(email);
 
-      if (!resp) {
+      if (!result) {
         return response({
           res,
           data: null,
@@ -21,8 +21,6 @@ module.exports = {
           message: "Email atau password tidak cocok!",
         });
       }
-
-      const result = JSON.parse(JSON.stringify(resp))
 
       const isPasswordMatch = await bcrypt.compareSync(
         password,
@@ -36,16 +34,13 @@ module.exports = {
           message: "Email atau password tidak cocok!",
         });
       }
-      console.log("Test");
-      console.log(result);
       const jwtToken = jwt.sign({
-        data: 'test'
-      }, 'rahasi@', { expiresIn: '1h' });
-      console.log(jwtToken);
-      console.log(result);
-      console.log("Test2");
+        id: result.id,
+        name: result.name,
+        email: result.email
+      }, process.env.SECRET_KEY)
       const data ={
-        token: 'token',
+        token: jwtToken,
         user: result
       }
       return response({
