@@ -59,7 +59,7 @@ module.exports = {
     }
   },
   async register(req, res) {
-    const { name, email, phone_number, password, gender } = req.body;
+    const { name, email, phone_number, password } = req.body;
 
     const salt = bcrypt.genSaltSync(10);
     const passwordWithHash = bcrypt.hashSync(password, salt);
@@ -68,7 +68,6 @@ module.exports = {
       email,
       phone_number,
       password: passwordWithHash,
-      gender,
     };
     try {
       const user = await customerModel.getOneByEmail(email);
@@ -91,7 +90,31 @@ module.exports = {
           ...dataUser
         },
         code: 200,
-        message: "",
+        message: "Register berhasil, silahkan login!",
+      });
+    } catch (err) {
+      return response({
+        res,
+        data: null,
+        code: 400,
+        message: err.message,
+      });
+    }
+  },
+  async setAgeAndGender(req, res) {
+    const { gender, age } = req.body;
+    const id = req?.user?.id
+    const dataUser = {
+      gender,
+      age
+    };
+    try {
+      await customerModel.updateOne(dataUser, id);
+      return response({
+        res,
+        data: null,
+        code: 200,
+        message: "Success",
       });
     } catch (err) {
       return response({

@@ -33,5 +33,16 @@ module.exports = {
         }
       });
     });
-  }
+  },
+  updateOne: (data, id) => {
+    return new Promise((reslove, reject) => {
+      connection.query("UPDATE users SET ? WHERE id = ?", [data, id], (err, result) => {
+        if (!err) {
+          reslove(result);
+        } else {
+          reject(new Error(err));
+        }
+      });
+    });
+  },
 };
