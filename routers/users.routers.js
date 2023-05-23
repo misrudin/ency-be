@@ -12,4 +12,6 @@ router.put('/set-gender', verifyAuth, customerController.setAgeAndGender);
 
 router.get('/me', verifyAuth, customerController.getProfile);
 
+router.put('/me', verifyAuth, customerController.updateProfile);
+
 module.exports = router;

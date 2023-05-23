@@ -153,4 +153,24 @@ module.exports = {
       });
     }
   },
+  async updateProfile(req, res) {
+    const body = req.body;
+    const { id } = req.user
+    try {
+      await customerModel.updateOne(body, id);
+      return response({
+        res,
+        data: null,
+        code: 200,
+        message: "Success",
+      });
+    } catch (err) {
+      return response({
+        res,
+        data: null,
+        code: 400,
+        message: err.message,
+      });
+    }
+  },
 };
