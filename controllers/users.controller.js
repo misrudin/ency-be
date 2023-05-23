@@ -18,7 +18,7 @@ module.exports = {
           res,
           data: null,
           code: 400,
-          message: "Email atau password tidak cocok!",
+          message: "Email atau password salah",
         });
       }
 
@@ -31,7 +31,7 @@ module.exports = {
           res,
           data: null,
           code: 400,
-          message: "Email atau password tidak cocok!",
+          message: "Email atau password salah",
         });
       }
       const jwtToken = jwt.sign({

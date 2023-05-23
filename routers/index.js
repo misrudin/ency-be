@@ -1,12 +1,12 @@
 const express = require('express');
-const products = require('./products.routers')
-const categories = require('./categories.routers')
-const users = require('./users.routers')
+const products = require('./products.router')
+const labels = require('./labels.router')
+const users = require('./users.router')
 
 const router = express.Router();
 
 router.use('/products', products);
-router.use('/categories', categories);
+router.use('/labels', labels);
 router.use('/users', users);
 
 // router.use('/homepage', getHomepage);
