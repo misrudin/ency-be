@@ -10,4 +10,6 @@ router.post('/register', customerController.register);
 
 router.put('/set-gender', verifyAuth, customerController.setAgeAndGender);
 
+router.get('/me', verifyAuth, customerController.getProfile);
+
 module.exports = router;

@@ -125,4 +125,32 @@ module.exports = {
       });
     }
   },
+  async getProfile(req, res) {
+    const { id } = req.user
+    try {
+      const result = await customerModel.getOneById(id);
+      if(!result) {
+        return response({
+          res,
+          data: null,
+          code: 404,
+          message: "Data tidak ditemukan!",
+        });
+      }
+      delete result.password;
+      return response({
+        res,
+        data: result,
+        code: 200,
+        message: "Success",
+      });
+    } catch (err) {
+      return response({
+        res,
+        data: null,
+        code: 400,
+        message: err.message,
+      });
+    }
+  },
 };

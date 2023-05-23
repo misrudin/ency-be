@@ -23,6 +23,17 @@ module.exports = {
       });
     });
   },
+  getOneById: (id) => {
+    return new Promise((resolve, reject) => {
+      connection.query("SELECT * FROM users WHERE id=? LIMIT 1", id, (err, result) => {
+        if (!err) {
+          resolve(result[0]);
+        } else {
+          reject(new Error(err));
+        }
+      });
+    });
+  },
   getOneByEmail: (email) => {
     return new Promise((resolve, reject) => {
       connection.query("SELECT * FROM users WHERE email=? LIMIT 1", email, (err, result) => {
