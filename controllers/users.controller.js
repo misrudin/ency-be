@@ -103,7 +103,7 @@ module.exports = {
   },
   async setAgeAndGender(req, res) {
     const { gender, age } = req.body;
-    const id = req?.user?.id
+    const { id } = req.user
     const dataUser = {
       gender,
       age
