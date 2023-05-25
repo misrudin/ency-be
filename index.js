@@ -14,6 +14,8 @@ var corsOptions = {
   optionsSuccessStatus: 200
 }
 
+app.use('/files', express.static("./files"));
+
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
