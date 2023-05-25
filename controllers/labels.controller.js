@@ -30,7 +30,6 @@ module.exports = {
   },
   async getLabelById(req, res) {
     const { id } = req.params
-    console.log(id);
     try {
       const result = await labelsModel.getOneById(id);
       if(!result) {
@@ -96,9 +95,9 @@ module.exports = {
   },
   async updateLabel(req, res) {
     const body = req.body
-    const id = req.params
+    const { id } = req.params
     try {
-      await labelsModel.updateOne(body, id);
+      await labelsModel.updateOne(body, Number(id));
       return response({
         res,
         code: 200,
