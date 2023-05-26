@@ -17,8 +17,8 @@ var corsOptions = {
 app.use('/files', express.static("./files"));
 
 app.use(cors(corsOptions));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(morgan('tiny'));
 
 app.use('/api/v1', apiRouter);
