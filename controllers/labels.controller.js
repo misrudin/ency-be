@@ -4,7 +4,8 @@ const response = require("../helpers/response");
 module.exports = {
   async getLabels(req, res) {
     try {
-      const result = await labelsModel.getAll();
+      const { search } = req.query
+      const result = await labelsModel.getAll(search);
       if(result.length === 0) {
         return response({
           res,
