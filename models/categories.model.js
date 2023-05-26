@@ -12,9 +12,10 @@ module.exports = {
       });
     });
   },
-  getAll: () => {
+  getAll: (search) => {
     return new Promise((resolve, reject) => {
-      connection.query("SELECT * FROM categories", (err, result) => {
+      const query = `SELECT * FROM labels WHERE name LIKE '%${search || ''}%'`
+      connection.query(query, (err, result) => {
         if (!err) {
           resolve(result);
         } else {

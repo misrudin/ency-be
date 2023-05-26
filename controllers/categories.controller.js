@@ -4,7 +4,8 @@ const response = require("../helpers/response");
 module.exports = {
   async getCategories(req, res) {
     try {
-      const result = await categoryModel.getAll();
+      const { search } = req.query
+      const result = await categoryModel.getAll(search);
       if(result.length === 0) {
         return response({
           res,
