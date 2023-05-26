@@ -14,7 +14,7 @@ module.exports = {
   },
   getAll: (search) => {
     return new Promise((resolve, reject) => {
-      const query = `SELECT * FROM labels WHERE name LIKE '%${search || ''}%'`
+      const query = `SELECT * FROM categories WHERE name LIKE '%${search || ''}%'`
       connection.query(query, (err, result) => {
         if (!err) {
           resolve(result);
